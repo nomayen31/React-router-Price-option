@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from '../Link/Link';
+import { AiOutlineMenu, AiFillCloseCircle } from 'react-icons/ai';
 
 const NavBar = () => {
+    const [open, setOpen] = useState(false)
     const routes = [
         { path: '/', name: 'Home', id: 1 },
         { path: '/about', name: 'About', id: 2 },
@@ -13,6 +15,11 @@ const NavBar = () => {
       
     return (
         <nav>
+            <div className='md:hidden' onClick={()=>setOpen(!open)}>
+                {
+                    open === true ? <AiFillCloseCircle></AiFillCloseCircle> : <AiOutlineMenu></AiOutlineMenu>
+                }
+              </div>
            <ul className='md:flex'>
            {
                 routes.map(route =><Link  key={route.id}
